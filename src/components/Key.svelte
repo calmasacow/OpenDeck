@@ -67,6 +67,8 @@
 			// Parent slot is empty. A late setImage from the previous page must not fill this key.
 			if (!inslot && payload.contents) return;
 			slot = payload.contents;
+			// Dial feedback lives in the backend renderer, outside drawKey's state fields.
+			if (context.controller === "Encoder") scheduleDraw();
 		}),
 	);
 
